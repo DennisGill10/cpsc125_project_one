@@ -123,15 +123,19 @@ def convert_to_graph(board, trains):
     board[first_city].add(second_city)
     board[second_city].add(first_city)
 
-def find_path(board, first_city, second_city):
-
-    for board in board:
-      if(
-      if(first_city == board(first_city)
-        return find_path(board, board[first_city], second_city)
-      elif(first_city == board([second_city]))
-          return find_path(board, first_city, board[second_city])
-  return True   
+def find_path(board, first_city, second_city, path = []):
+  path = path + [first_city]
+  if first_city == second_city :
+    return path
+  if first_city not in board :
+    return None
+  else :
+    for city in board[first_city] :
+      if city not in path:
+        newpath = find_path(board, city, second_city, path)
+        if newpath :
+          return newpath
+    return None    
 
 def calculate_score(board, tickets):
   score = 0
@@ -142,9 +146,40 @@ def calculate_score(board, tickets):
       score = score - ticket[2]
   return score
 
-# main
+def print_trains(trains) :
+  print("The list of trains:")
+  maxlen = 0
+  for train in trains :
+    if len(train[0]) > maxlen :
+      maxlen = len(train[0])
 
+  for train in trains :
+    spaces = ""
+    for i in range(maxlen - len(train[0])) :
+      spaces += " "
+    print(train[0] + spaces + "\t\t" + train[1])
+
+def print_tickets(tickets) :
+  print("The list of tickets:")
+  maxlen = 0
+  max2 = 0
+  for ticket in tickets :
+    if len(ticket[0]) > maxlen :
+      maxlen = len(ticket[0])
+      max2 = len(ticket[1])
+
+  for ticket in tickets :
+    spaces = ""
+    spaces2 = ""
+    for i in range(maxlen - len(ticket[0])) :
+      spaces += " "
+    for j in range (max2 - len(ticket[1])) :
+      spaces2 += " "
+    print(ticket[0] + spaces + "\t\t" + ticket[1] + spaces2 + "\t\t" + str(ticket[2]))
+    #print(ticket[0] + spaces + "\t\t" + ticket[1])
+	
 convert_to_graph(board, trains)
 score = calculate_score(board, tickets)
-
+print_trains(trains)
+print_tickets(tickets)
 print("The score is: {0}".format(score))
