@@ -84,7 +84,7 @@ tickets = [
 ##        ['Los Angeles',    'New York',      21], 
         ['Duluth',         'Houston',        8], 
 ##        ['Sault St Marie', 'Nashville',      8], 
-        ['New York',       'Atlanta',        6] 
+        ['New York',       'Atlanta',        6], 
         ['Portland',       'Nashville',     17], 
 ##        ['Vancouver',      'Montreal',      20], 
 ##        ['Duluth',         'El Paso',       10], 
