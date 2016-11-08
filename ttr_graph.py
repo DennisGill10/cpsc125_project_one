@@ -179,7 +179,11 @@ def print_tickets(tickets) :
     #print(ticket[0] + spaces + "\t\t" + ticket[1])
 	
 convert_to_graph(board, trains)
+print("")
 score = calculate_score(board, tickets)
+print("")
 print_trains(trains)
+print("")
 print_tickets(tickets)
+print("")
 print("The score is: {0}".format(score))
